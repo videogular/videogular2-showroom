@@ -1,9 +1,6 @@
 <vg-player>
-
-    <vg-scrub-bar>
-        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-    </vg-scrub-bar>
+    <vg-overlay-play></vg-overlay-play>
+    <vg-buffering></vg-buffering>
 
     <vg-controls>
         <vg-play-pause></vg-play-pause>
@@ -11,7 +8,10 @@
 
         <vg-time-display property="current" format="mm:ss"></vg-time-display>
 
-        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+        <vg-scrub-bar>
+            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        </vg-scrub-bar>
 
         <vg-time-display property="left" format="mm:ss"></vg-time-display>
         <vg-time-display property="total" format="mm:ss"></vg-time-display>
