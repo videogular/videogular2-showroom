@@ -1,0 +1,12 @@
+#demo-player {
+    width: 100%;
+    height: calc(100% - 90px);
+}
+#companion-ad {
+    text-align: center;
+    width: 100%;
+    height: 90px;
+}
+.skip-button {
+    display: none;
+}
