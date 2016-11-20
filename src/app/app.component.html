@@ -1,12 +1,15 @@
-<ul>
-    <li routerLink="simple-player">Simple Player</li>
-    <li routerLink="single-player">Single Player</li>
-    <li routerLink="audio-player">Audio Player</li>
-    <li routerLink="bound-player">Bound Player</li>
-    <li routerLink="cue-points-player">Cue Points Player</li>
-    <li routerLink="google-ima-player">Google IMA Player</li>
-    <li routerLink="master-player">Master Player</li>
-    <li routerLink="streaming-player">DASH & HLS Player</li>
+<ul class="menu">
+    <li routerLink="simple-player" [routerLinkActive]="['is-active']">Simple Player</li>
+    <li routerLink="single-player" [routerLinkActive]="['is-active']">Single Player</li>
+    <li routerLink="audio-player" [routerLinkActive]="['is-active']">Audio Player</li>
+    <li routerLink="bound-player" [routerLinkActive]="['is-active']">Bound Player</li>
+    <li routerLink="cue-points-player" [routerLinkActive]="['is-active']">Cue Points Player</li>
+    <li routerLink="google-ima-player" [routerLinkActive]="['is-active']">Google IMA Player</li>
+    <li routerLink="master-player" [routerLinkActive]="['is-active']">Master Player</li>
+    <li routerLink="streaming-player" [routerLinkActive]="['is-active']">DASH & HLS Player</li>
 </ul>
 
-<router-outlet></router-outlet>
+<section class="player-container">
+    <router-outlet></router-outlet>
+</section>
+
