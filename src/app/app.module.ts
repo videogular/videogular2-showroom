@@ -13,6 +13,7 @@ import { CuePointsPlayerModule } from "./cue-points-player/cue-points-player.mod
 import { GoogleImaPlayerModule } from "./google-ima-player/google-ima-player.module";
 import { MasterPlayerModule } from "./master-player/master-player.module";
 import { StreamingPlayerModule } from "./streaming-player/streaming-player.module";
+import { VrPlayerModule } from "./vr-player/vr-player.module";
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { StreamingPlayerModule } from "./streaming-player/streaming-player.modul
         CuePointsPlayerModule,
         GoogleImaPlayerModule,
         MasterPlayerModule,
-        StreamingPlayerModule
+        StreamingPlayerModule,
+        VrPlayerModule
     ],
     providers: [],
     bootstrap: [ AppComponent ]

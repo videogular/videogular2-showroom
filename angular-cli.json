@@ -22,6 +22,9 @@
                 "styles.css"
             ],
             "scripts": [
+                "../node_modules/aframe/dist/aframe-v0.3.0.min.js",
+                "../node_modules/aframe-animation-component/dist/aframe-animation-component.min.js",
+                "../node_modules/aframe-bmfont-text-component/dist/aframe-bmfont-text-component.min.js",
                 "../node_modules/dashjs/dist/dash.all.min.js",
                 "../node_modules/hls.js/dist/hls.min.js"
             ],

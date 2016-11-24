@@ -1,0 +1,68 @@
+<vg-player (onPlayerReady)="onPlayerReady($event)">
+    <div class="title" [ngClass]="{ 'hide': hideTitle }">{{ cuePointData.title }}</div>
+
+    <vg-scrub-bar style="bottom: 0;">
+        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        <vg-scrub-bar-cue-points [cuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
+    </vg-scrub-bar>
+
+    <a-scene vr-mode-ui="enabled: true" (renderstart)="onAframeRenderStart()" embedded>
+        <a-assets>
+            <video [src]="currentVideo.url" vg-media id="video" preload="auto" crossorigin="anonymous" loop autoplay muted>
+                <track [src]="currentVideo.track" kind="metadata" label="Cue Points" default
+                       #metadataTrack
+                       vgCuePoints
+                       (onEnterCuePoint)="onEnterCuePoint($event)"
+                       (onExitCuePoint)="onExitCuePoint($event)">
+            </video>
+            <img id="ringImg" src="assets/images/ring1.png" width="512" height="512">
+        </a-assets>
+
+        <a-plane
+            *ngFor="let txtPlane of currentVideo.textPlanes; let i=index"
+            [attr.depth]="i"
+            [attr.rotation]="txtPlane.rotation"
+            [attr.position]="txtPlane.position"
+            [attr.width]="txtPlane.width"
+            [attr.height]="txtPlane.height"
+            (mouseenter)="onMouseEnterPlane(txtPlane)"
+            opacity="0">
+        </a-plane>
+
+        <a-text
+            *ngFor="let txt of currentVideo.texts; let i=index"
+            color="#FFF"
+            [id]="txt.id"
+            [attr.depth]="10 + i"
+            [attr.position]="txt.position"
+            [attr.rotation]="txt.rotation"
+            [attr.scale]="txt.scale"
+            [attr.text]="txt.text"
+            [attr.animation__visibility]="txt.opaAnim"
+            [attr.animation__position]="txt.posAnim"
+            opacity="0">
+        </a-text>
+
+        <a-image
+            *ngFor="let door of currentVideo.doors; let i=index"
+            [id]="door.id"
+            [attr.depth]="100 + i"
+            [attr.position]="door.position"
+            [attr.rotation]="door.rotation"
+            src="#ringImg"
+            scale="0 0 0"
+            (mouseenter)="onMouseEnter($event, door)"
+            (mouseleave)="onMouseLeave($event)"
+            animation__fadein="startEvents: vgStartFadeInAnimation; property: scale; dur: 2000; to: 1 1 1"
+            animation__scale="startEvents: vgStartAnimation; pauseEvents: vgPauseAnimation; property: scale; dur: 2000; from: 1 1 1; to: 2 2 2"
+            animation__visibility="startEvents: vgStartAnimation; pauseEvents: vgPauseAnimation; property: material.opacity; dur: 2000; from: 1; to: 0">
+        </a-image>
+
+        <a-videosphere src="#video"></a-videosphere>
+
+        <a-camera>
+            <a-cursor color="#FFFFFF"></a-cursor>
+        </a-camera>
+    </a-scene>
+</vg-player>
