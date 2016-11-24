@@ -1,13 +1,21 @@
+aside {
+    background-color: #507EB3;
+    height: 100%;
+    position: fixed;
+}
+
+.logo {
+    padding: 10px;
+}
+
 .menu {
     width: 250px;
     height: 100%;
-    background-color: #507EB3;
     color: #FFFFFF;
     margin: 0;
     padding: 0;
     font-size: 18px;
     font-family: sans-serif;
-    position: fixed;
 }
 
 .menu li {
