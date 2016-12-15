@@ -1,7 +1,7 @@
 <vg-player (onPlayerReady)="onPlayerReady($event)">
     <vg-overlay-play></vg-overlay-play>
 
-    <vg-controls *ngIf="!controls" [autohide]="true" [autohide-time]="1.5">
+    <vg-controls *ngIf="!controls" [autohide]="true" [autohideTime]="1.5">
         <vg-play-pause></vg-play-pause>
         <vg-playback-button></vg-playback-button>
 
@@ -20,7 +20,7 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video vg-media id="singleVideo" preload="auto" [controls]="controls">
+    <video vgMedia id="singleVideo" preload="auto" [controls]="controls">
         <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
     </video>
 </vg-player>

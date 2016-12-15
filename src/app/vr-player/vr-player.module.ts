@@ -2,12 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { VrPlayerComponent } from "./vr-player.component";
 import { VgControlsModule } from "videogular2/controls";
-import { VgCore } from "videogular2/core";
+import { VgCoreModule } from "videogular2/core";
 
 @NgModule({
     imports: [
         CommonModule,
-        VgCore,
+        VgCoreModule,
         VgControlsModule
     ],
     declarations: [ VrPlayerComponent ],

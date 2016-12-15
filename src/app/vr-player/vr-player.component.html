@@ -9,7 +9,7 @@
 
     <a-scene vr-mode-ui="enabled: true" (renderstart)="onAframeRenderStart()" embedded>
         <a-assets>
-            <video [src]="currentVideo.url" vg-media id="video" preload="auto" crossorigin="anonymous" loop autoplay muted>
+            <video [src]="currentVideo.url" vgMedia id="video" preload="auto" crossorigin="anonymous" loop autoplay muted>
                 <track [src]="currentVideo.track" kind="metadata" label="Cue Points" default
                        #metadataTrack
                        vgCuePoints

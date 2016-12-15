@@ -1,22 +1,22 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { TimerObservable } from "rxjs/observable/TimerObservable";
-import { VgAPI } from "videogular2/src/services/vg-api";
+import { VgAPI } from "videogular2/core";
 
-interface IAframeEntity {
+export interface IAframeEntity {
     id: string;
     position: string;
     rotation: string;
 }
-interface IVrDoor extends IAframeEntity {
+export interface IVrDoor extends IAframeEntity {
     goto: string;
 }
-interface IVrText extends IAframeEntity {
+export interface IVrText extends IAframeEntity {
     text: string;
     scale: string;
     opaAnim: string;
     posAnim: string;
 }
-interface IVrTextPlane extends IAframeEntity {
+export interface IVrTextPlane extends IAframeEntity {
     position: string;
     rotation: string;
     target: string;
@@ -24,7 +24,7 @@ interface IVrTextPlane extends IAframeEntity {
     height: number;
     isShown: boolean;
 }
-interface IVideo {
+export interface IVideo {
     id: string;
     url: string;
     track: string;

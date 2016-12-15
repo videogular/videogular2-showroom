@@ -1,11 +1,11 @@
 <vg-player id="demo-player">
     <vg-ima-ads
-        [vg-companion]="'companion-ad'"
-        [vg-companion-size]="[728, 90]"
-        [vg-network]="'6062'"
-        [vg-unit-path]="'iab_vast_samples'"
-        [vg-ad-tag-url]="'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator='"
-        [vg-skip-button]="'.skip-button'">
+        [vgCompanion]="'companion-ad'"
+        [vgCompanionSize]="[728, 90]"
+        [vgNetwork]="'6062'"
+        [vgUnitPath]="'iab_vast_samples'"
+        [vgAdTagUrl]="'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator='"
+        [vgSkipButton]="'.skip-button'">
     </vg-ima-ads>
 
     <vg-overlay-play></vg-overlay-play>
@@ -32,7 +32,7 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video vg-media #media id="singleVideo" preload="auto">
+    <video vgMedia #media id="singleVideo" preload="auto">
         <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
     </video>
 </vg-player>

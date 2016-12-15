@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-interface Stream {
+export interface IMediaStream {
     source:string;
     label:string;
 }
@@ -11,9 +11,9 @@ interface Stream {
     styleUrls: [ './streaming-player.component.css' ]
 })
 export class StreamingPlayerComponent implements OnInit {
-    currentStream:Stream;
+    currentStream:IMediaStream;
 
-    streams:Stream[] = [
+    streams:IMediaStream[] = [
         { label: 'VOD', source: 'http://static.videogular.com/assets/videos/videogular.mp4' },
         { label: 'DASH: Multi rate Streaming', source: 'http://dash.edgesuite.net/dash264/TestCases/2a/qualcomm/1/MultiResMPEG2.mpd' },
         { label: 'DASH: Live Streaming', source: 'http://vm2.dashif.org/livesim/testpic_6s/Manifest.mpd' },
@@ -27,7 +27,7 @@ export class StreamingPlayerComponent implements OnInit {
         this.currentStream = this.streams[0];
     }
 
-    onClickStream(stream:Stream) {
+    onClickStream(stream:IMediaStream) {
         this.currentStream = stream;
     }
 }
