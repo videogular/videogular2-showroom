@@ -14,6 +14,7 @@ import { GoogleImaPlayerModule } from "./google-ima-player/google-ima-player.mod
 import { MasterPlayerModule } from "./master-player/master-player.module";
 import { StreamingPlayerModule } from "./streaming-player/streaming-player.module";
 import { VrPlayerModule } from "./vr-player/vr-player.module";
+import { MultiplePlayersModule } from './multiple-players/multiple-players.module';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { VrPlayerModule } from "./vr-player/vr-player.module";
         SinglePlayerModule,
         AudioPlayerModule,
         BoundPlayerModule,
+        MultiplePlayersModule,
         CuePointsPlayerModule,
         GoogleImaPlayerModule,
         MasterPlayerModule,

@@ -4,7 +4,7 @@
     <vg-scrub-bar style="bottom: 0;">
         <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
         <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-        <vg-scrub-bar-cue-points [cuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
+        <vg-scrub-bar-cue-points [vgCuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
     </vg-scrub-bar>
 
     <a-scene vr-mode-ui="enabled: true" (renderstart)="onAframeRenderStart()" embedded>

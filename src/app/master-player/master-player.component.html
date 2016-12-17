@@ -4,15 +4,15 @@
     <vg-controls>
         <vg-play-pause></vg-play-pause>
 
-        <vg-time-display property="current" format="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
 
-        <vg-scrub-bar>
+        <vg-scrub-bar vgFor="masterVideo">
             <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
             <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
         </vg-scrub-bar>
 
-        <vg-time-display property="left" format="mm:ss"></vg-time-display>
-        <vg-time-display property="total" format="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
 
         <vg-mute></vg-mute>
 
@@ -20,7 +20,7 @@
     </vg-controls>
 
 
-    <video vgMedia="true" id="masterVideo" preload="auto" style="width: 50%;">
+    <video vgMedia="master" id="masterVideo" preload="auto" style="width: 50%;">
         <source *ngFor="let video of master" [src]="video.src" [type]="video.type">
     </video>
 
