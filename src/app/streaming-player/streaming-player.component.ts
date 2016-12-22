@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { VgAPI } from 'videogular2/core';
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import { Subscription } from 'rxjs';
 
 export interface IMediaStream {
     source:string;
@@ -11,7 +14,8 @@ export interface IMediaStream {
     styleUrls: [ './streaming-player.component.css' ]
 })
 export class StreamingPlayerComponent implements OnInit {
-    currentStream:IMediaStream;
+    currentStream: string;
+    api: VgAPI;
 
     streams:IMediaStream[] = [
         { label: 'VOD', source: 'http://static.videogular.com/assets/videos/videogular.mp4' },
@@ -23,11 +27,22 @@ export class StreamingPlayerComponent implements OnInit {
     constructor() {
     }
 
+    onPlayerReady(api:VgAPI) {
+        this.api = api;
+    }
+
     ngOnInit() {
-        this.currentStream = this.streams[0];
+        this.currentStream = this.streams[0].source;
     }
 
     onClickStream(stream:IMediaStream) {
-        this.currentStream = stream;
+        this.api.pause();
+
+        let timer:Subscription = TimerObservable.create(0, 10).subscribe(
+            () => {
+                this.currentStream = stream.source;
+                timer.unsubscribe();
+            }
+        );
     }
 }

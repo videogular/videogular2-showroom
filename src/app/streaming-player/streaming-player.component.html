@@ -1,4 +1,4 @@
-<vg-player>
+<vg-player (onPlayerReady)="onPlayerReady($event)">
     <vg-overlay-play></vg-overlay-play>
     <vg-buffering></vg-buffering>
 
@@ -24,13 +24,17 @@
     </vg-controls>
 
     <video vgMedia
-           [vgDash]="currentStream.source"
-           [vgHls]="currentStream.source"
+           [vgDash]="currentStream"
+           [vgHls]="currentStream"
            id="singleVideo"
-           preload="auto"
+           preload="none"
            crossorigin>
     </video>
 </vg-player>
+
+<label>
+    Media Url: <input type="text" [(ngModel)]="currentStream">
+</label>
 
 <ul>
     <li *ngFor="let stream of streams" (click)="onClickStream(stream)">{{ stream.label }}</li>
