@@ -51,7 +51,7 @@ export class VrPlayerComponent implements OnInit {
         {
             id: 'v0',
             url: 'http://static.videogular.com/assets/videos/vr-route-0.mp4',
-            track: 'http://static.videogular.com/assets/data/stage-1.vtt',
+            track: 'assets/data/stage-1.vtt',
             doors: [
                 { id: 'd1', position: '-3 2 -10', rotation: '0 0 0', goto: 'v1' }
             ],
@@ -61,7 +61,7 @@ export class VrPlayerComponent implements OnInit {
         {
             id: 'v1',
             url: 'http://static.videogular.com/assets/videos/vr-route-1.mp4',
-            track: 'http://static.videogular.com/assets/data/stage-2.vtt',
+            track: 'assets/data/stage-2.vtt',
             doors: [
                 { id: 'd1', position: '-15 -3 -18', rotation: '0 -180 0', goto: 'v0' },
                 { id: 'd2', position: '8 1 9', rotation: '0 -130 0', goto: 'v2' }
@@ -92,7 +92,7 @@ export class VrPlayerComponent implements OnInit {
         {
             id: 'v2',
             url: 'http://static.videogular.com/assets/videos/vr-route-2.mp4',
-            track: 'http://static.videogular.com/assets/data/stage-3.vtt',
+            track: 'assets/data/stage-3.vtt',
             doors: [
                 { id: 'd1', position: '-1 1 -8', rotation: '0 -30 0', goto: 'v1' },
                 { id: 'd2', position: '0 2 7', rotation: '0 180 0', goto: 'v3' }
@@ -103,7 +103,7 @@ export class VrPlayerComponent implements OnInit {
         {
             id: 'v3',
             url: 'http://static.videogular.com/assets/videos/vr-route-3.mp4',
-            track: 'http://static.videogular.com/assets/data/stage-4.vtt',
+            track: 'assets/data/stage-4.vtt',
             doors: [
                 { id: 'd1', position: '-5 2 7', rotation: '0 130 0', goto: 'v2' },
                 { id: 'd2', position: '3 4 7', rotation: '0 210 0', goto: 'v4' }
@@ -114,7 +114,7 @@ export class VrPlayerComponent implements OnInit {
         {
             id: 'v4',
             url: 'http://static.videogular.com/assets/videos/vr-route-4.mp4',
-            track: 'http://static.videogular.com/assets/data/stage-5.vtt',
+            track: 'assets/data/stage-5.vtt',
             doors: [
                 { id: 'd1', position: '2 1 10', rotation: '0 180 0', goto: 'v3' },
                 { id: 'd2', position: '3 2 -10', rotation: '0 180 0', goto: 'v0' }
