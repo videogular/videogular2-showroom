@@ -38,7 +38,7 @@
     </div>
     <div>
         <label for="nativeFullscreen">Native Fullscreen</label>
-        <input #nativeFullscreen id="nativeFullscreen" type="checkbox" [(ngModel)]="fsAPI.nativeFullscreen">
+        <input #nativeFullscreen id="nativeFullscreen" type="checkbox" [(ngModel)]="nativeFs" (change)="onChangeNativeFs($event)">
     </div>
     <div>
         <label>{{ 'Current time: ' + api?.time?.current}}</label>

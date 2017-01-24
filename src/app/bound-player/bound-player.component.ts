@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import {VgAPI, VgFullscreenAPI} from 'videogular2/core';
+import { Component, OnInit } from '@angular/core';
+import { VgAPI, VgFullscreenAPI } from 'videogular2/core';
 
 @Component({
     selector: 'app-bound-player',
@@ -7,17 +7,16 @@ import {VgAPI, VgFullscreenAPI} from 'videogular2/core';
     styleUrls: [ './bound-player.component.css' ]
 })
 export class BoundPlayerComponent implements OnInit {
-    sources:Array<Object>;
-    controls:boolean = false;
-    autoplay:boolean = false;
-    loop:boolean = false;
-    preload:string = 'auto';
-    api:VgAPI;
-    fsAPI:VgFullscreenAPI;
+    sources: Array<Object>;
+    controls: boolean = false;
+    autoplay: boolean = false;
+    loop: boolean = false;
+    preload: string = 'auto';
+    api: VgAPI;
+    fsAPI: VgFullscreenAPI;
+    nativeFs: boolean = true;
 
     constructor() {
-        this.fsAPI = VgFullscreenAPI;
-
         this.sources = [
             {
                 src: "http://static.videogular.com/assets/videos/videogular.mp4",
@@ -34,8 +33,10 @@ export class BoundPlayerComponent implements OnInit {
         ];
     }
 
-    onPlayerReady(api:VgAPI) {
+    onPlayerReady(api: VgAPI) {
         this.api = api;
+        this.fsAPI = this.api.fsAPI;
+        this.nativeFs = this.fsAPI.nativeFullscreen;
 
         this.api.getDefaultMedia().subscriptions.ended.subscribe(
             () => {
@@ -43,6 +44,11 @@ export class BoundPlayerComponent implements OnInit {
                 this.api.getDefaultMedia().currentTime = 0;
             }
         );
+    }
+
+    onChangeNativeFs($event) {
+        this.fsAPI.nativeFullscreen = this.nativeFs;
+        console.log('onChangeNativeFs', this.fsAPI.nativeFullscreen, this.nativeFs);
     }
 
     onClickUpdateSource() {
