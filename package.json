@@ -30,7 +30,7 @@
     "hls.js": "0.6.10",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "videogular2": "4.0.3",
+    "videogular2": "4.0.5",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
