@@ -25,7 +25,7 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video vgMedia #media id="playerOne" preload="auto" crossorigin>
+    <video #mediaOne [vgMedia]="mediaOne" id="playerOne" preload="auto" crossorigin>
         <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
         <track kind="subtitles" label="English" src="assets/subs/pale-blue-dot.vtt" srclang="en" default>
         <track kind="subtitles" label="Español" src="assets/subs/pale-blue-dot-es.vtt" srclang="es">
@@ -59,7 +59,7 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video vgMedia #media id="playerTwo" preload="auto" crossorigin>
+    <video #mediaTwo [vgMedia]="mediaTwo" id="playerTwo" preload="auto" crossorigin>
         <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
         <track kind="subtitles" label="English" src="assets/subs/pale-blue-dot.vtt" srclang="en" default>
         <track kind="subtitles" label="Español" src="assets/subs/pale-blue-dot-es.vtt" srclang="es">

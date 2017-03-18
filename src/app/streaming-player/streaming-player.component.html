@@ -23,7 +23,8 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video vgMedia
+    <video #media
+           [vgMedia]="media"
            [vgDash]="currentStream"
            [vgHls]="currentStream"
            id="singleVideo"

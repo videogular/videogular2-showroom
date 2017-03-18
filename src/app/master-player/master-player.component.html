@@ -20,11 +20,11 @@
     </vg-controls>
 
 
-    <video vgMedia="master" id="masterVideo" preload="auto" style="width: 50%;">
+    <video #masterMedia [vgMedia]="masterMedia" [vgMaster]="true" id="masterVideo" preload="auto" style="width: 50%;">
         <source *ngFor="let video of master" [src]="video.src" [type]="video.type">
     </video>
 
-    <video vgMedia id="pipVideo" preload="auto" style="width: 50%;">
+    <video #slaveMedia [vgMedia]="slaveMedia" id="pipVideo" preload="auto" style="width: 50%;">
         <source *ngFor="let video of slave" [src]="video.src" [type]="video.type">
     </video>
 </vg-player>

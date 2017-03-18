@@ -39,7 +39,6 @@ export interface IVideo {
     styleUrls: [ './vr-player.component.css' ]
 })
 export class VrPlayerComponent implements OnInit {
-
     elem: any;
     aframe: any;
     cuePointData: any = {};
