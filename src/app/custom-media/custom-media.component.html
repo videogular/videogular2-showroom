@@ -1,0 +1,19 @@
+<vg-player>
+    <vg-controls>
+        <vg-play-pause></vg-play-pause>
+
+        <vg-scrub-bar>
+            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        </vg-scrub-bar>
+
+        <vg-time-display vgProperty="total"></vg-time-display>
+
+        <vg-fullscreen></vg-fullscreen>
+    </vg-controls>
+
+    <app-time-viewer #timerRef id="timer" [vgMedia]="timerRef" [duration]="duration"></app-time-viewer>
+</vg-player>
+
+<label>
+    Duration: <input type="number" [(ngModel)]="duration">
+</label>

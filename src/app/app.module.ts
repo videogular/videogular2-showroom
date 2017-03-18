@@ -15,6 +15,7 @@ import { MasterPlayerModule } from "./master-player/master-player.module";
 import { StreamingPlayerModule } from "./streaming-player/streaming-player.module";
 import { VrPlayerModule } from "./vr-player/vr-player.module";
 import { MultiplePlayersModule } from './multiple-players/multiple-players.module';
+import { CustomMediaModule } from './custom-media/custom-media.module';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { MultiplePlayersModule } from './multiple-players/multiple-players.modul
         GoogleImaPlayerModule,
         MasterPlayerModule,
         StreamingPlayerModule,
-        VrPlayerModule
+        VrPlayerModule,
+        CustomMediaModule
     ],
     providers: [],
     bootstrap: [ AppComponent ]

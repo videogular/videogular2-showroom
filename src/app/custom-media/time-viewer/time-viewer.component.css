@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    width: 100%;
+    color: white;
+    font-size: 100px;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+span {
+    display: inline-flex;
+    align-items: center;
+    height: 200px;
+}
