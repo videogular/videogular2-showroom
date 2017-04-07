@@ -13,7 +13,6 @@ import { CuePointsPlayerModule } from "./cue-points-player/cue-points-player.mod
 import { GoogleImaPlayerModule } from "./google-ima-player/google-ima-player.module";
 import { MasterPlayerModule } from "./master-player/master-player.module";
 import { StreamingPlayerModule } from "./streaming-player/streaming-player.module";
-import { VrPlayerModule } from "./vr-player/vr-player.module";
 import { MultiplePlayersModule } from './multiple-players/multiple-players.module';
 import { CustomMediaModule } from './custom-media/custom-media.module';
 
@@ -36,7 +35,6 @@ import { CustomMediaModule } from './custom-media/custom-media.module';
         GoogleImaPlayerModule,
         MasterPlayerModule,
         StreamingPlayerModule,
-        VrPlayerModule,
         CustomMediaModule
     ],
     providers: [],

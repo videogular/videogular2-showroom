@@ -7,7 +7,6 @@ import { CuePointsPlayerComponent } from "../cue-points-player/cue-points-player
 import { GoogleImaPlayerComponent } from "../google-ima-player/google-ima-player.component";
 import { MasterPlayerComponent } from "../master-player/master-player.component";
 import { StreamingPlayerComponent } from "../streaming-player/streaming-player.component";
-import { VrPlayerComponent } from "../vr-player/vr-player.component";
 import { MultiplePlayersComponent } from '../multiple-players/multiple-players.component';
 import { CustomMediaComponent } from '../custom-media/custom-media.component';
 
@@ -23,7 +22,6 @@ export const ROUTES: Routes = [
     { path: 'google-ima-player', component: GoogleImaPlayerComponent },
     { path: 'master-player', component: MasterPlayerComponent },
     { path: 'streaming-player', component: StreamingPlayerComponent },
-    { path: 'vr-player', component: VrPlayerComponent },
     { path: 'custom-media', component: CustomMediaComponent },
 
     { path: '**', component: SimplePlayerComponent }
