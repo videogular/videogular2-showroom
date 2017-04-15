@@ -16,15 +16,8 @@ node_js:
 
 before_install:
 - npm i -g npm@^3.0.0
-
-before_script:
-- npm uninstall -g angular-cli
-- npm uninstall -g @angular/cli
 - npm cache clean
-- npm install -g @angular/cli@latest
 - rm -rf node_modules
-- npm install --save-dev @angular/cli@latest
-- npm install
 
 script:
 - npm run build
