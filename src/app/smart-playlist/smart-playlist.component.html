@@ -1,7 +1,4 @@
 <vg-player (onPlayerReady)="onPlayerReady($event)">
-    <vg-overlay-play></vg-overlay-play>
-    <vg-buffering></vg-buffering>
-
     <vg-controls>
         <vg-play-pause></vg-play-pause>
         <vg-playback-button></vg-playback-button>
@@ -13,10 +10,8 @@
             <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
         </vg-scrub-bar>
 
-        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
         <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
 
-        <vg-track-selector></vg-track-selector>
         <vg-mute></vg-mute>
         <vg-volume></vg-volume>
 
@@ -25,17 +20,17 @@
 
     <video #media
            [vgMedia]="media"
-           [vgDash]="currentStream"
-           [vgHls]="currentStream"
+           [src]="currentItem.src"
            id="singleVideo"
+           preload="auto"
            crossorigin>
     </video>
 </vg-player>
 
-<label>
-    Media Url: <input type="text" [(ngModel)]="currentStream">
-</label>
-
 <ul>
-    <li *ngFor="let stream of streams" (click)="onClickStream(stream)">{{ stream.label }}</li>
+    <li *ngFor="let item of playlist; let $index = index"
+        (click)="onClickPlaylistItem(item, $index)"
+        [class.selected]="item === currentItem">
+        {{ item.title }}
+    </li>
 </ul>
