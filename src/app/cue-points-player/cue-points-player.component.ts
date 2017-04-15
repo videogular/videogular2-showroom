@@ -1,5 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 
+export interface ICuePoint {
+    title: string;
+    description: string;
+    src: string;
+    href: string;
+}
+
 @Component({
     selector: 'app-cue-points-player',
     templateUrl: './cue-points-player.component.html',
@@ -7,7 +14,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class CuePointsPlayerComponent implements OnInit {
     sources: Array<Object>;
-    cuePointData: Object = {};
+    cuePointData: ICuePoint = null;
 
     constructor() {
         this.sources = [
@@ -34,6 +41,6 @@ export class CuePointsPlayerComponent implements OnInit {
     }
 
     onExitCuePoint($event) {
-        this.cuePointData = {};
+        this.cuePointData = null;
     }
 }
