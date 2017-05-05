@@ -37,5 +37,5 @@
 </label>
 
 <ul>
-    <li *ngFor="let stream of streams" (click)="onClickStream(stream)">{{ stream.label }}</li>
+    <li *ngFor="let stream of streams" (click)="onClickStream(stream)" [ngClass]="{'selected': currentStream === stream.source}">{{ stream.label }}</li>
 </ul>
