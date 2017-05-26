@@ -1,4 +1,12 @@
-<vg-player>
+<vg-player (onPlayerReady)="onPlayerReady($event)">
+    <div *ngIf="cuePointData?.title" class="info-layer">
+        <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
+        <p>
+            <img [src]="cuePointData?.src" align="left">
+            {{ cuePointData?.description }}
+        </p>
+    </div>
+
     <vg-overlay-play></vg-overlay-play>
 
     <vg-controls>
@@ -32,8 +40,58 @@
     </video>
 </vg-player>
 
-<div *ngIf="cuePointData?.title" style="display: flex; height: 200px;">
-    <h3><a [href]="cuePointData?.href">{{ cuePointData?.title }}</a></h3>
-    <h4>{{ cuePointData?.description }}</h4>
-    <img [src]="cuePointData?.src" width="100%" height="100%">
+<div class="cue-row">
+    <table>
+        <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="json-header">JSON</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cue of track?.cues">
+                <td>{{ cue.startTime }}</td>
+                <td>{{ cue.endTime }}</td>
+                <td class="json">{{ cue.text }}</td>
+                <td>
+                    <button type="button" (click)="onClickRemove(cue)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
+<h2>Add a Cue Point dynamically (all fields are required)</h2>
+
+<form name="cueForm"
+      #formRef="ngForm"
+      (submit)="onSubmit(formRef, $event)">
+    <div>
+        <label for="startTime">Start Time</label>
+        <input type="number" id="startTime" name="startTime" [(ngModel)]="newCue.startTime" required>
+    </div>
+    <div>
+        <label for="endTime">End Time</label>
+        <input type="number" id="endTime" name="endTime" [(ngModel)]="newCue.endTime" required>
+    </div>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" [(ngModel)]="newCue.title" required>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" [(ngModel)]="newCue.description" required>
+    </div>
+    <div>
+        <label for="src">Image URL</label>
+        <input type="text" id="src" name="src" [(ngModel)]="newCue.src" required>
+    </div>
+    <div>
+        <label for="href">Link</label>
+        <input type="text" id="href" name="href" [(ngModel)]="newCue.href" required>
+    </div>
+
+    <button type="submit" [disabled]="!formRef.valid">Add Cue</button>
+</form>

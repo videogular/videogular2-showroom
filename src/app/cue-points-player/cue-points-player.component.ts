@@ -1,6 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { VgAPI } from 'videogular2/core';
+import { NgForm } from '@angular/forms';
+
+declare var VTTCue;
 
 export interface ICuePoint {
+    title: string;
+    description: string;
+    src: string;
+    href: string;
+}
+
+export interface IWikiCue {
+    startTime: number;
+    endTime: number;
     title: string;
     description: string;
     src: string;
@@ -15,6 +28,16 @@ export interface ICuePoint {
 export class CuePointsPlayerComponent implements OnInit {
     sources: Array<Object>;
     cuePointData: ICuePoint = null;
+    api: VgAPI;
+    track: TextTrack;
+    newCue: IWikiCue = {
+        startTime: 40,
+        endTime: 50,
+        title: 'Carl Sagan',
+        description: 'Carl Edward Sagan (/ˈseɪɡən/; November 9, 1934 – December 20, 1996) was an American astronomer, cosmologist, astrophysicist, astrobiologist, author, science popularizer, and science communicator in astronomy and other natural sciences.',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/b/be/Carl_Sagan_Planetary_Society.JPG',
+        href: 'https://en.wikipedia.org/wiki/Carl_Sagan'
+    };
 
     constructor() {
         this.sources = [
@@ -34,6 +57,35 @@ export class CuePointsPlayerComponent implements OnInit {
     }
 
     ngOnInit() {
+
+    }
+
+    onPlayerReady(api: VgAPI) {
+        this.api = api;
+        this.track = this.api.textTracks[ 0 ];
+    }
+
+    onSubmit(form: NgForm, event: Event) {
+        event.preventDefault();
+
+        if (form.valid) {
+            const jsonData = {
+                title: form.value.title,
+                description: form.value.description,
+                src: form.value.src,
+                href: form.value.href
+            };
+
+            const jsonText = JSON.stringify(jsonData);
+
+            this.track.addCue(
+                new VTTCue(form.value.startTime, form.value.endTime, jsonText)
+            );
+        }
+    }
+
+    onClickRemove(cue: TextTrackCue) {
+        this.track.removeCue(cue);
     }
 
     onEnterCuePoint($event) {

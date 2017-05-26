@@ -28,7 +28,7 @@
         "dashjs": "2.3.0",
         "hls.js": "0.6.10",
         "rxjs": "^5.1.0",
-        "videogular2": "5.2.9",
+        "videogular2": "5.3.3",
         "zone.js": "^0.8.4"
     },
     "devDependencies": {

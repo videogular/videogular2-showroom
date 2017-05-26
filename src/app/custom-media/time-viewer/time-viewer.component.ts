@@ -24,6 +24,7 @@ export class TimeViewerComponent implements OnInit, IPlayable {
     isLive: boolean = false;
     state: string = VgStates.VG_PAUSED;
     subscriptions: IMediaSubscriptions;
+    textTracks: TextTrack[] = [];
 
     @Input()
     duration: number;
