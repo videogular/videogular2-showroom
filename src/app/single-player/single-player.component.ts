@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 
 @Component({
     selector: 'app-single-player',
     templateUrl: './single-player.component.html',
-    styleUrls: [ './single-player.component.css' ]
+    styleUrls: [ './single-player.component.css' ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SinglePlayerComponent implements OnInit {
     sources: Array<Object>;
