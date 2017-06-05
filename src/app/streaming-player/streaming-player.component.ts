@@ -19,9 +19,9 @@ export class StreamingPlayerComponent implements OnInit {
 
     streams:IMediaStream[] = [
         { label: 'VOD', source: 'http://static.videogular.com/assets/videos/videogular.mp4' },
-        { label: 'DASH: Multi rate Streaming', source: 'http://dash.edgesuite.net/akamai/bbb_30fps/bbb_30fps.mpd' },
-        { label: 'DASH: Live Streaming', source: 'http://24x7dash-i.akamaihd.net/dash/live/900080/dash-demo/dash.mpd' },
-        { label: 'HLS: Streaming', source: 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8' }
+        { label: 'DASH: Multi rate Streaming', source: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd' },
+        { label: 'DASH: Live Streaming', source: 'https://24x7dash-i.akamaihd.net/dash/live/900080/dash-demo/dash.mpd' },
+        { label: 'HLS: Streaming', source: 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8' }
     ];
 
     constructor() {
