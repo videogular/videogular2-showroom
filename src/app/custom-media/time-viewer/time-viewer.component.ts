@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, SimpleChanges, OnDestroy } from '@angular/core';
 import { IPlayable, IMediaSubscriptions } from 'videogular2/src/core/vg-media/i-playable';
 import { VgStates, VgEvents } from 'videogular2/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,7 +10,7 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
     templateUrl: './time-viewer.component.html',
     styleUrls: [ './time-viewer.component.css' ]
 })
-export class TimeViewerComponent implements OnInit, IPlayable {
+export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
     id: string;
     elem: any;
     time: any = { current: 0, total: 0, left: 0 };
@@ -42,12 +42,11 @@ export class TimeViewerComponent implements OnInit, IPlayable {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['duration'].currentValue) {
+        if (changes['duration'].currentValue !== changes['duration'].previousValue) {
             if (this.timerSubs) {
                 this.pause();
             }
 
-            this.duration = changes['duration'].currentValue;
             this.time.current = 0;
             this.time.total = this.duration;
             this.buffer.end = this.duration;
@@ -110,5 +109,11 @@ export class TimeViewerComponent implements OnInit, IPlayable {
         this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PAUSE));
         this.timerSubs.unsubscribe();
         this.state = VgStates.VG_PAUSED;
+    }
+
+    ngOnDestroy() {
+        if (this.timerSubs) {
+            this.timerSubs.unsubscribe();
+        }
     }
 }
