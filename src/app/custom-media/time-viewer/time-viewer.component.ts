@@ -107,13 +107,17 @@ export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
 
     pause() {
         this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PAUSE));
-        this.timerSubs.unsubscribe();
+        this.unsubscribe();
         this.state = VgStates.VG_PAUSED;
     }
 
-    ngOnDestroy() {
+    unsubscribe() {
         if (this.timerSubs) {
             this.timerSubs.unsubscribe();
         }
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe();
     }
 }
