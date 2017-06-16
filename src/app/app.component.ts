@@ -1,6 +1,7 @@
 import { Component, HostBinding, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
 @Component({
     selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     subscriptions: Subscription[] = [];
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, public angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
 
     }
 

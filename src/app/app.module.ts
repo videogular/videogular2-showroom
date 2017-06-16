@@ -16,6 +16,7 @@ import { StreamingPlayerModule } from "./streaming-player/streaming-player.modul
 import { MultiplePlayersModule } from './multiple-players/multiple-players.module';
 import { CustomMediaModule } from './custom-media/custom-media.module';
 import { SmartPlaylistModule } from './smart-playlist/smart-playlist.module';
+import { Angulartics2GoogleAnalytics, Angulartics2Module } from 'angulartics2';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { SmartPlaylistModule } from './smart-playlist/smart-playlist.module';
         FormsModule,
         HttpModule,
         RouterModule.forRoot(ROUTES, { useHash: true }),
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
 
         SimplePlayerModule,
         SinglePlayerModule,
