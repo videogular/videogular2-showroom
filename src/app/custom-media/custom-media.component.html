@@ -2,6 +2,8 @@
     <vg-controls>
         <vg-play-pause></vg-play-pause>
 
+        <vg-time-display vgProperty="current"></vg-time-display>
+
         <vg-scrub-bar>
             <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
         </vg-scrub-bar>
@@ -11,7 +13,7 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <app-time-viewer #timerRef id="timer" [vgMedia]="timerRef" [duration]="duration"></app-time-viewer>
+    <app-svg-viewer #svgRef id="timer" [vgMedia]="svgRef" [src]="source" [duration]="duration"></app-svg-viewer>
 </vg-player>
 
 <label>

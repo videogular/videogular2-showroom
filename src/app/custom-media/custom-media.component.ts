@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: [ './custom-media.component.css' ]
 })
 export class CustomMediaComponent {
-    duration = 30;
+    duration = 5;
+    source = 'assets/images/vivus_instant_logo.svg';
 
     constructor() {}
 }

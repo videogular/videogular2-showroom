@@ -5,12 +5,14 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
+export declare let Vivus;
+
 @Component({
-    selector: 'app-time-viewer',
-    templateUrl: './time-viewer.component.html',
-    styleUrls: [ './time-viewer.component.css' ]
+    selector: 'app-svg-viewer',
+    templateUrl: './svg-viewer.component.html',
+    styleUrls: [ './svg-viewer.component.css' ]
 })
-export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
+export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
     id: string;
     elem: any;
     time: any = { current: 0, total: 0, left: 0 };
@@ -26,9 +28,10 @@ export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
     subscriptions: IMediaSubscriptions;
     textTracks: TextTrack[] = [];
 
-    @Input()
-    duration: number;
+    @Input() duration: number;
+    @Input() src: string;
 
+    vivus: any;
     timer: Observable<number>;
     timerSubs: Subscription;
 
@@ -39,6 +42,14 @@ export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
 
     ngOnInit() {
         this.timer = TimerObservable.create(0, 10);
+        this.vivus = new Vivus(
+            'container',
+            {
+                duration: this.duration * 100,
+                file: this.src,
+                start: 'manual'
+            }
+        );
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -58,46 +69,41 @@ export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
         }
     }
 
-    play() {
-        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PLAY));
-        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PLAYING));
-
-        this.timerSubs = this.timer.subscribe(
-            () => {
-                this.time.current += 0.01;
-                this.currentTime = this.time.current;
-                this.state = VgStates.VG_PLAYING;
-
-                this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_TIME_UPDATE));
-
-                if (this.time.current >= this.time.total) {
-                    this.time.current = 0;
-                    this.currentTime = 0;
-                    this.state = VgStates.VG_ENDED;
-                    this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_ENDED));
-                    this.timerSubs.unsubscribe();
-                }
-            }
-        );
+    onComplete() {
+        this.state = VgStates.VG_ENDED;
+        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_ENDED));
+        this.timerSubs.unsubscribe();
     }
 
-    seekTime(value:number, byPercent:boolean = false) {
-        let second:number;
-        let duration:number = this.time.total;
+    onProgress() {
+        this.time.current += 0.01;
+        this.currentTime = this.time.current;
+        this.state = VgStates.VG_PLAYING;
+        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_TIME_UPDATE));
 
-        if (byPercent) {
-            second = value * duration / 100;
+        if (this.time.current >= this.time.total) {
+            this.onComplete();
         }
-        else {
-            second = value;
+    }
+
+    play() {
+        if (this.state === VgStates.VG_ENDED) {
+            this.time.current = 0;
+            this.currentTime = 0;
         }
 
-        this.time.current = second;
-        this.currentTime = second;
+        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PLAY));
+        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PLAYING));
+        this.timerSubs = this.timer.subscribe(this.onProgress.bind(this));
     }
 
     set currentTime(seconds) {
+        let vivusFrameProgress:number;
+
+        vivusFrameProgress = (seconds * 100 / this.duration) / 100;
+
         this.time.current = seconds;
+        this.vivus.setFrameProgress(vivusFrameProgress);
         this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_TIME_UPDATE));
     }
 
@@ -106,8 +112,8 @@ export class TimeViewerComponent implements OnInit, OnDestroy, IPlayable {
     }
 
     pause() {
-        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PAUSE));
         this.unsubscribe();
+        this.elem.dispatchEvent(new CustomEvent(VgEvents.VG_PAUSE));
         this.state = VgStates.VG_PAUSED;
     }
 

@@ -8,8 +8,8 @@
     justify-content: center;
 }
 
-span {
+#container {
     display: inline-flex;
     align-items: center;
-    height: 200px;
+    height: 400px;
 }
