@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { SingleMediaPlayerComponent } from './single-media-player.component';
+import { SinglePlayerComponent } from './single-player.component';
 
-describe('SingleMediaPlayerComponent', () => {
-  let component: SingleMediaPlayerComponent;
-  let fixture: ComponentFixture<SingleMediaPlayerComponent>;
+describe('SinglePlayerComponent', () => {
+  let component: SinglePlayerComponent;
+  let fixture: ComponentFixture<SinglePlayerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleMediaPlayerComponent ]
+      declarations: [ SinglePlayerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SingleMediaPlayerComponent);
+    fixture = TestBed.createComponent(SinglePlayerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
