@@ -1,30 +1,41 @@
 <vg-player>
-    <vg-buffering></vg-buffering>
-
     <vg-controls>
         <vg-play-pause></vg-play-pause>
-
-        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-
-        <vg-scrub-bar vgFor="masterVideo">
+        <vg-scrub-bar>
             <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
         </vg-scrub-bar>
 
-        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+        <div class="cam-selector-container">
+            <div class="cam-selected">CAM</div>
 
-        <vg-mute></vg-mute>
+            <select class="camera-selector" [(ngModel)]="selectedCamera.id" (change)="onSelectCamera($event.target.value)">
+                <option value="null">Select camera</option>
+                <option
+                    *ngFor="let camera of cameras; let $$index = index;"
+                    [value]="$$index"
+                    [selected]="camera.selected === true">
+                    {{ camera.name }}
+                </option>
+            </select>
+        </div>
+
+        <vg-mute vgFor="master"></vg-mute>
+        <vg-volume vgFor="master"></vg-volume>
 
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
+    <vg-pip *ngIf="selectedCamera.source"
+            (onCloseCam)="selectedCamera = { id: null }"
+            [camera]="selectedCamera">
+    </vg-pip>
 
-    <video #masterMedia [vgMedia]="masterMedia" [vgMaster]="true" id="masterVideo" preload="auto" style="width: 50%;">
-        <source *ngFor="let video of master" [src]="video.src" [type]="video.type">
-    </video>
-
-    <video #slaveMedia [vgMedia]="slaveMedia" id="pipVideo" preload="auto" style="width: 50%;">
-        <source *ngFor="let video of slave" [src]="video.src" [type]="video.type">
+    <video id="master"
+           #masterRef
+           [vgMedia]="masterRef"
+           [vgMaster]="true"
+           [src]="masterVideo">
     </video>
 </vg-player>
+
+<p>Thanks to <a href="http://ign.com" target="_blank">IGN</a> for the video sources!</p>

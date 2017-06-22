@@ -1,0 +1,19 @@
+vg-mute {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.twitter {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: right;
+}

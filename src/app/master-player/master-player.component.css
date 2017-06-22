@@ -1,0 +1,41 @@
+vg-pip {
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    bottom: 70px;
+    width: 40%;
+    height: auto;
+}
+
+.cam-selector-container {
+    position: relative;
+}
+
+select.camera-selector {
+    width: 50px;
+    height: 50px;
+    padding: 5px 8px;
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: transparent;
+    font-size: 16px;
+}
+select.camera-selector:focus {
+    outline: none;
+}
+
+.cam-selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    pointer-events: none;
+}

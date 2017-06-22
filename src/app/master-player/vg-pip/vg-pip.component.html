@@ -1,0 +1,12 @@
+<h1 class="twitter">{{ camera.twitter }}</h1>
+
+<video #pipRef
+       [vgMedia]="pipRef"
+       [src]="camera.source"
+       id="slaveVideo"
+       preload="auto"
+       playsinline
+       crossorigin
+       muted
+       (click)="onClickCam()">
+</video>
