@@ -30,6 +30,7 @@ export class CuePointsPlayerComponent implements OnInit {
     cuePointData: ICuePoint = null;
     api: VgAPI;
     track: TextTrack;
+    showCuePointManager = false;
     newCue: IWikiCue = {
         startTime: 40,
         endTime: 50,
@@ -38,6 +39,8 @@ export class CuePointsPlayerComponent implements OnInit {
         src: 'https://upload.wikimedia.org/wikipedia/commons/b/be/Carl_Sagan_Planetary_Society.JPG',
         href: 'https://en.wikipedia.org/wiki/Carl_Sagan'
     };
+
+    json: JSON = JSON;
 
     constructor() {
         this.sources = [
