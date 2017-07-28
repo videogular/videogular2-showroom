@@ -1,4 +1,8 @@
-<vg-player>
+<vg-player (onPlayerReady)="onPlayerReady($event)">
+    <div class="title" [ngClass]="{ 'hide': media?.state === 'playing' }">
+        Thanks to <a href="http://ign.com" target="_blank">IGN</a> for the video sources!
+    </div>
+
     <vg-controls>
         <vg-play-pause></vg-play-pause>
         <vg-scrub-bar>
@@ -37,5 +41,3 @@
            [src]="masterVideo">
     </video>
 </vg-player>
-
-<p>Thanks to <a href="http://ign.com" target="_blank">IGN</a> for the video sources!</p>

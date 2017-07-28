@@ -1,3 +1,48 @@
-input {
-    font-size: 16px;
+:host {
+    display: block;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 proportions */
+    position: relative;
+}
+
+vg-player {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.duration-control {
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    line-height: 50px;
+    position: relative;
+}
+
+.duration-control:hover .durations {
+    display: flex;
+}
+
+.durations {
+    display: none;
+    flex-direction: column-reverse;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: 50px;
+    list-style-type: none;
+}
+
+.duration-option {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: #FFFFFF;
 }

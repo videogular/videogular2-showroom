@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { VgAPI, VgStates } from 'videogular2/core';
+import { IPlayable } from 'videogular2/src/core/vg-media/i-playable';
 
 export interface ICamera {
     id: number;
@@ -23,7 +25,13 @@ export class MasterPlayerComponent {
         {id: 3, source: 'http://assets14.ign.com/videos/zencoder/2015/8/14/640/3494db07bf4565c213110558c22da978-500000-1439510425-w.mp4', name: 'Ryan Maccaffrey', twitter: '@DMC_Ryan'}
     ];
 
+    media: IPlayable;
+
     constructor() {}
+
+    onPlayerReady(api: VgAPI) {
+        this.media = api.getDefaultMedia();
+    }
 
     onSelectCamera(index: number) {
         if (index >= 0) {

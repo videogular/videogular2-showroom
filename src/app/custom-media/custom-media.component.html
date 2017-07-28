@@ -10,12 +10,18 @@
 
         <vg-time-display vgProperty="total"></vg-time-display>
 
+        <div class="duration-control fa fa-clock-o">
+            <ul class="durations">
+                <li class="duration-option"
+                    *ngFor="let dur of durations"
+                    (click)="duration = dur">
+                    {{ dur }}s
+                </li>
+            </ul>
+        </div>
+
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
     <app-svg-viewer #svgRef id="timer" [vgMedia]="svgRef" [src]="source" [duration]="duration"></app-svg-viewer>
 </vg-player>
-
-<label>
-    Duration: <input type="number" [(ngModel)]="duration">
-</label>

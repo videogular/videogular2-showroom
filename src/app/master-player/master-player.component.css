@@ -39,3 +39,23 @@ select.camera-selector:focus {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     pointer-events: none;
 }
+
+.title {
+    width: calc(100% - 20px);
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    text-align: right;
+}
+
+.title.hide {
+    display: none;
+}
+
+a {
+    color: #FFFFFF;
+}
