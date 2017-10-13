@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
-    "aot": "ng serve --prod --env=prod",
-    "build": "ng build --prod --env=prod --bh /videogular2-showroom/",
+    "aot": "ng serve --prod --aot --env=prod",
+    "build": "ng build --prod --aot --env=prod --bh /videogular2-showroom/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
