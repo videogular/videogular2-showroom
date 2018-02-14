@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICamera } from '../master-player.component';
 
 @Component({

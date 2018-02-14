@@ -26,7 +26,7 @@ export class SvgViewerComponent implements OnInit, OnDestroy, IPlayable {
     isLive: boolean = false;
     state: string = VgStates.VG_PAUSED;
     subscriptions: IMediaSubscriptions;
-    textTracks: TextTrack[] = [];
+    textTracks: TextTrackList;
 
     @Input() duration: number;
     @Input() src: string;
