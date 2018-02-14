@@ -19,7 +19,7 @@
         "dashjs": "2.5.0",
         "hls.js": "0.6.10",
         "rxjs": "5.5.2",
-        "videogular2": "6.0.5",
+        "videogular2": "6.0.6",
         "vivus": "0.4.1",
         "zone.js": "^0.8.4"
     },
