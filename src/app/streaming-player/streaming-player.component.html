@@ -5,13 +5,17 @@
     <vg-controls>
         <vg-play-pause></vg-play-pause>
 
-
         <vg-scrub-bar>
             <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
             <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
         </vg-scrub-bar>
 
         <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-quality-selector *ngIf="bitrates"
+                             (onBitrateChange)="setBitrate($event)"
+                             [bitrates]="bitrates">
+        </vg-quality-selector>
 
         <vg-mute></vg-mute>
         <vg-volume></vg-volume>
@@ -20,6 +24,7 @@
     </vg-controls>
 
     <video #media
+           (onGetBitrates)="bitrates = $event"
            [vgMedia]="media"
            [vgDash]="currentStream.source"
            [vgHls]="currentStream.source"
