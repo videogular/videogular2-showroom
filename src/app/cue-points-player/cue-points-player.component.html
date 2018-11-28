@@ -1,11 +1,13 @@
 <vg-player (onPlayerReady)="onPlayerReady($event)">
-    <div *ngIf="cuePointData?.title" class="info-layer">
-        <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
-        <p>
-            <img [src]="cuePointData?.src" align="left">
-            {{ cuePointData?.description }}
-        </p>
-    </div>
+    <ng-container *ngIf="activeCuePoints">
+        <div *ngFor="let cuePointData of activeCuePoints" class="info-layer">
+            <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
+            <p>
+                <img [src]="cuePointData?.src" align="left">
+                {{ cuePointData?.description }}
+            </p>
+        </div>
+    </ng-container>
 
     <div class="cue-point-manager-layer" *ngIf="showCuePointManager">
         <div class="close fa fa-close" (click)="showCuePointManager = false"></div>
