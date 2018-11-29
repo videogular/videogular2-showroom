@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 declare var VTTCue;
 
 export interface ICuePoint {
+    id: string;
     title: string;
     description: string;
     src: string;
@@ -27,7 +28,7 @@ export interface IWikiCue {
 })
 export class CuePointsPlayerComponent implements OnInit {
     sources: Array<Object>;
-    cuePointData: ICuePoint = null;
+    activeCuePoints: ICuePoint[] = [];
     api: VgAPI;
     track: TextTrack;
     showCuePointManager = false;
@@ -92,10 +93,10 @@ export class CuePointsPlayerComponent implements OnInit {
     }
 
     onEnterCuePoint($event) {
-        this.cuePointData = JSON.parse($event.text);
+        this.activeCuePoints.push({"id":$event.id, ...JSON.parse($event.text)});
     }
 
     onExitCuePoint($event) {
-        this.cuePointData = null;
+        this.activeCuePoints = this.activeCuePoints.filter(c => c.id!==$event.id);
     }
 }
